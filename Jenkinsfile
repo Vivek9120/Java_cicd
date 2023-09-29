@@ -6,6 +6,30 @@ pipeline {
 
     }
     stages{
+        stage("Cleanup Workspase"){
+            steps{
+                cleanws()
+            }
+        }
+
+        stage("Checkout from SCM"){
+            steps{
+                git branch: 'main', crendentialsID: 'github', url: 'https://github.com/Vivek9120/Java_cicd'
+            }
+            }
         
+        stage("Build Application"){
+            steps{
+                sh "mvn clean package"
+            }
+        }
+
+        stage("Test Application"){
+            steps{
+                sh "mvn test"
+            }
+        }
+        
+        }
     }
 }
