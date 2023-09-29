@@ -14,7 +14,7 @@ pipeline {
 
         stage("Checkout from SCM"){
             steps{
-                git branch: 'main', crendentialsID: 'github', url: 'https://github.com/Vivek9120/Java_cicd'
+                git branch: 'main', credentialsID: 'github', url: 'https://github.com/Vivek9120/Java_cicd'
             }
             }
         
