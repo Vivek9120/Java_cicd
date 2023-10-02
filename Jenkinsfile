@@ -59,23 +59,11 @@ pipeline {
                     docker.withRegistry('',DOCKER_PASS){
                         docker_image = docker.build "${IMAGE_NAME}"
                     }
-                    // docker.withRegistry('',DOCKER_PASS){
-                    //     docker_image.push("${IMAGE_NAME}")
-                    //     docker_image.push('latest')
-                    // }
-                 if (docker_image) {
-                // Push Docker Image with specific tag
-                docker.withRegistry('', DOCKER_PASS) {
-                    docker_image.push("${IMAGE_TAG}")
-                }
-
-                // Push Docker Image with 'latest' tag
-                docker.withRegistry('', DOCKER_PASS) {
-                    docker_image.push('latest')
-                }
-            } else {
-                error "Failed to build Docker image"
-            }
+                    docker.withRegistry('',DOCKER_PASS){
+                        docker_image.push("${IMAGE_TAG}")
+                        docker_image.push('latest')
+                    }
+                
                 }
 
             }
