@@ -66,7 +66,7 @@ pipeline {
                  if (docker_image) {
                 // Push Docker Image with specific tag
                 docker.withRegistry('', DOCKER_PASS) {
-                    docker_image.push("${IMAGE_NAME}")
+                    docker_image.push("${IMAGE_TAG}")
                 }
 
                 // Push Docker Image with 'latest' tag
