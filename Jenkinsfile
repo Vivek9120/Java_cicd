@@ -56,6 +56,7 @@ pipeline {
         stage("Build & Push Docker Image"){
             steps {
                 script{
+                     println "Image Tag: ${IMAGE_TAG}"
                     docker.withRegistry('',DOCKER_PASS){
                         docker_image = docker.build "${IMAGE_NAME}"
                     }
