@@ -12,6 +12,7 @@ pipeline {
         DOCKER_PASS = 'dockerhub'
         IMAGE_NAME = "${DOCKER_USER}"+"/"+"${APP_NAME}"
         IMAGE_TAG = "${RELEASE}-${BUILD_NUMBER}"
+        V = IMAGE_TAG
 
     }
     stages{
@@ -61,7 +62,7 @@ pipeline {
                         docker_image = docker.build "${IMAGE_NAME}"
                     }
                     docker.withRegistry('',DOCKER_PASS){
-                        docker_image.push("${RELEASE}-${BUILD_NUMBER}")
+                        docker_image.push("${V}")
                         docker_image.push('latest')
                     }
                 }
