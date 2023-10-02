@@ -11,7 +11,9 @@ pipeline {
         DOCKER_USER = "vk84178"
         DOCKER_PASS = 'dockerhub'
         IMAGE_NAME = "${DOCKER_USER}"+"/"+"${APP_NAME}"
-        IMAGE_TAG = "${RELEASE}-${BUILD_NUMBER}"
+        // IMAGE_TAG = "${RELEASE}-${BUILD_NUMBER}"
+        IMAGE_TAG = "${RELEASE}-${BUILD_NUMBER}".replaceAll("[^a-zA-Z0-9_.-]", "_")
+
     }
     stages{
         stage("Cleanup Workspase"){
